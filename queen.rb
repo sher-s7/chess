@@ -1,9 +1,11 @@
 class Queen
-  include 'piece'
-  attr_accessor :moves, :unicode, :color
-  def initialize(color)
+  require './piece'
+  include Piece
+  attr_accessor :moves, :unicode, :color, :name
+  def initialize(color='w')
+    @name = 'Queen'
     @color = color
-    @color == 'w' ? @unicode = "\u2655" : @unicode = "\u265B" #queen unicode
+    @color == 'w' ? @unicode = "Q".light_white : @unicode = "Q".light_green
     @moves = getMoves  
   end
 

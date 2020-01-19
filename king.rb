@@ -1,10 +1,12 @@
 class King
-  include 'piece'
-  attr_accessor :moves, :unicode, :color
+  require './piece'
+  include Piece
+  attr_accessor :moves, :unicode, :color, :name
 
-  def initialize(color)
+  def initialize(color='w')
+    @name = 'King'
     @color = color
-    @color == 'w' ? @unicode = "\u2654" : @unicode = "\u265A" #king unicode
+    @color == 'w' ? @unicode = @unicode = "K".light_white : @unicode = "K".light_green
     @moves = [[0,1],[0,-1],[1,0],[-1,0],[-1,1],[1,1],[-1,-1],[1,-1]]
   end
 
