@@ -10,4 +10,8 @@ class King
     @moves = [[0,1],[0,-1],[1,0],[-1,0],[-1,1],[1,1],[-1,-1],[1,-1]]
   end
 
+  def path_blocked?(start, finish, squares)
+    return false
+  end
+
 end
