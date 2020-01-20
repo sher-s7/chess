@@ -10,7 +10,7 @@ class Rook
     @moves = [*-7..7].map {|n| [0,n]} + [*-7..7].map {|n| [n,0]}
   end
 
-  def path_blocked?(start, finish, squares)
+  def path_blocked?(start, finish, squares, color)
     if start[0] == finish[0]
       (start[1].to_i+1...finish[1].to_i).each do |n|
         squares.each do |square|

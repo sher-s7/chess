@@ -9,7 +9,7 @@ class Knight
     @moves = [[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1]]
   end
 
-  def path_blocked?(a,b,c) #always false since knight makes jump moves
+  def path_blocked?(a,b,c,d) #always false since knight makes jump moves
     return false
   end
 

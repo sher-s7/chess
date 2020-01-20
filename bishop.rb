@@ -48,7 +48,7 @@ class Bishop
     return path
   end
 
-  def path_blocked?(start, finish, squares)
+  def path_blocked?(start, finish, squares, color)
     path = get_path(start, finish)
     squares.each do |square|
       if path.include?(square.coordinate)

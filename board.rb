@@ -45,7 +45,7 @@ class Board
     end
     
   end
-  def make_move()
+  def make_move(player)
     begin
       orig_square= nil
       dest_square= nil
@@ -59,8 +59,9 @@ class Board
       end
       raise "Error: Move doesn't exist" if orig_square == nil || dest_square == nil
       raise "Error: No piece found at #{start}" if orig_square.piece == nil
+      raise "Error: Wrong color piece for #{player.name}" if player.color != orig_square.piece.color
       raise "Error: Invalid move for #{orig_square.piece.name}" if !orig_square.piece.valid_move?(orig_square.coordinate, dest_square.coordinate)
-      raise "Error: Path blocked" if orig_square.piece.path_blocked?(orig_square.coordinate, dest_square.coordinate, Square.all)
+      raise "Error: Path blocked" if orig_square.piece.path_blocked?(orig_square.coordinate, dest_square.coordinate, Square.all, player.color)
       raise "Error: Square is occupied" if !dest_square.piece.nil? && orig_square.piece.color == dest_square.piece.color
     rescue Exception=>e
       puts e
@@ -80,11 +81,3 @@ class Board
   end
 end
 
-
-b = Board.new
-b.populate_board
-puts b.to_s
-b.make_move()
-puts b.to_s
-b.make_move()
-puts b.to_s

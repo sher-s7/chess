@@ -7,13 +7,13 @@ class Pawn
     @name = 'Pawn'
     @color = color
     @color == 'w' ? @unicode = "P".light_white : @unicode = "P".light_green
-    @moves = [[0,1]]
+    @color=='w' ? @moves = [[0,1]] : @moves = [[0,-1]]
   end
 
-  def path_blocked?(start,finish,squares)
+  def path_blocked?(start,finish,squares, color)
     squares.each do |square|
       if square.coordinate == finish
-        return true if !square.piece.nil?
+        return true if !square.piece.nil? && square.piece.color == color
       end
     end
     return false

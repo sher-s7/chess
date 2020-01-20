@@ -86,7 +86,7 @@ class Queen
 
   end
 
-  def path_blocked?(start, finish, squares)
+  def path_blocked?(start, finish, squares, color)
     start[0] == finish[0] || start[1] == finish[1] ? path_blocked_straight?(start, finish, squares) : path_blocked_diag?(start, finish, squares)
   end
 
