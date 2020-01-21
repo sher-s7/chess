@@ -18,6 +18,52 @@ class Pawn
     end
     return false
   end
+
+  def promote?(square)
+    if (square.piece.color == 'w' && square.coordinate[1] == '7') || (square.piece.color == 'b' && square.coordinate[1] == '0')
+      return true
+    end
+    return false
+  end
+
+  def promote(square, pieces)
+    puts 'Do you want to promote your Pawn? (y/n)'
+    begin
+      answer = gets.chomp
+      if !(answer.downcase == 'y' || answer.downcase == 'n')
+        raise 'Error: Enter "y" (yes) or "n" (no)'
+      end
+    rescue Exception=>e 
+      puts e
+      retry
+    end
+
+    if answer == 'n'
+      return square.piece
+    elsif answer == 'y'
+      puts "Available pieces: "
+      pieces.each_with_index do |piece, i|
+        puts "#{i}: #{piece.name}"
+      end
+    end
+    begin
+      puts "Enter the number piece you want to use"
+      num = gets.chomp
+      raise 'Error: Enter valid number' if num.to_i.to_s != num
+      raise 'Error: Number out of range' if pieces[num.to_i].nil?
+    rescue Exception=>e 
+      puts e
+      retry
+    end
+    num = num.to_i
+    piece = pieces[num]
+    pieces.delete_at(num)
+    return piece
+  end
+
+
+
+
   
 
 end

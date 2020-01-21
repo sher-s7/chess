@@ -22,8 +22,6 @@ class Chess
       @board.make_move(active_player, inactive_player)
       active_player = swap_turn(active_player)
       inactive_player = swap_turn(inactive_player)
-      puts "Player1 dead: #{@player1.dead_pieces}"
-      puts "Player2 dead: #{@player2.dead_pieces}"
 
     end
   end

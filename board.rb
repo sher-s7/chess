@@ -70,6 +70,11 @@ class Board
     inactive_player.dead_pieces << dest_square.piece if !dest_square.piece.nil?
     dest_square.piece = orig_square.piece
     orig_square.piece = nil
+    if dest_square.piece.name == 'Pawn' && dest_square.piece.promote?(dest_square) == true
+      dest_square.piece = dest_square.piece.promote(dest_square, player.dead_pieces) if !player.dead_pieces.empty?
+    end
+      
+
   end
 
   def to_s
@@ -80,5 +85,8 @@ class Board
     end
     puts '   A   B   C   D   E   F   G   H'
   end
+
+  
+
 end
 

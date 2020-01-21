@@ -12,7 +12,13 @@ class Rook
 
   def path_blocked?(start, finish, squares, color)
     if start[0] == finish[0]
-      (start[1].to_i+1...finish[1].to_i).each do |n|
+      st = start[1]
+      en = finish[1]
+      if start[1].to_i > finish[1].to_i
+        st = finish[1]
+        en = start[1]
+      end
+      (st.to_i+1...en.to_i).each do |n|
         squares.each do |square|
           if square.coordinate == "#{start[0]}#{n}"
             return true if !square.piece.nil?
