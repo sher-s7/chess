@@ -14,12 +14,17 @@ class Chess
 
   def play()
     @board.populate_board
-    turn = @player1
+    active_player = @player1
+    inactive_player = @player2
     while true #change this to while !checkmate && !stalemate
       puts @board.to_s
-      puts "#{turn.name}'s turn: "
-      @board.make_move(turn)
-      turn = swap_turn(turn)
+      puts "#{active_player.name}'s turn: "
+      @board.make_move(active_player, inactive_player)
+      active_player = swap_turn(active_player)
+      inactive_player = swap_turn(inactive_player)
+      puts "Player1 dead: #{@player1.dead_pieces}"
+      puts "Player2 dead: #{@player2.dead_pieces}"
+
     end
   end
 

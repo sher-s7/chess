@@ -45,7 +45,7 @@ class Board
     end
     
   end
-  def make_move(player)
+  def make_move(player, inactive_player)
     begin
       orig_square= nil
       dest_square= nil
@@ -67,6 +67,7 @@ class Board
       puts e
       retry
     end
+    inactive_player.dead_pieces << dest_square.piece if !dest_square.piece.nil?
     dest_square.piece = orig_square.piece
     orig_square.piece = nil
   end
